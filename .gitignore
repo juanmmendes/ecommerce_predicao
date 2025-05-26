@@ -1,0 +1,49 @@
+# Banco de dados local
+*.db
+*.sqlite3
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Modelos salvos
+models/saved_models/*
+!models/saved_models/.gitkeep
+
+# Dados de exemplo
+examples/*.csv
+
+# Cache e artefatos de teste
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+logs/
+*.log
+
+# Ambiente virtual
+.venv/
+venv/
+.env
+.env.*
+
+# IDEs e editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Build/distribuição
+build/
+dist/
+*.egg-info/
+
+# Outros
+.DS_Store
+Thumbs.db
