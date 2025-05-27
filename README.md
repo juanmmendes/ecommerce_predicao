@@ -18,35 +18,6 @@ Este projeto é um pipeline completo de análise de dados para e-commerce, com g
 - **Testes unitários**: cobertura do pipeline e modelo.
 - **Documentação e exemplos**: instruções, exemplos de uso, estrutura profissional.
 
-## Estrutura do Projeto
-
-```
-ecommerce-analytics/
-│
-├── app.py                 # Dashboard Streamlit (principal)
-├── requirements.txt       # Dependências do projeto
-├── pyproject.toml         # Configuração de formatação e build
-│
-├── src/                  # Código fonte
-│   ├── etl/              # Pipeline ETL (pipeline.py)
-│   ├── models/           # Modelos de ML (churn_predictor.py)
-│   └── utils.py          # Utilitários
-│
-├── data/                 # Dados
-│   ├── raw/              # Dados brutos (mantém .gitkeep)
-│   └── processed/        # Dados processados (mantém .gitkeep)
-│
-├── models/               # Modelos treinados (opcional)
-│   └── saved_models/     # Modelos salvos (mantém .gitkeep)
-│
-├── tests/                # Testes unitários (test_etl.py)
-│
-├── docs/                 # Documentação e imagens
-│   └── images/           # Screenshots e ilustrações
-│
-├── examples/             # Exemplos de uso (run_pipeline.py)
-└── README.md             # Documentação principal
-```
 
 ## Como Executar
 
