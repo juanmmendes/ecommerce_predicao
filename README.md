@@ -1,4 +1,4 @@
-# E-commerce Analytics Dashboard
+# E-commerce Analytics & Churn Prediction Dashboard
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.0%2B-red)
@@ -18,99 +18,140 @@ Este projeto é um pipeline completo de análise de dados para e-commerce, com g
 - **Testes unitários**: cobertura do pipeline e modelo.
 - **Documentação e exemplos**: instruções, exemplos de uso, estrutura profissional.
 
+## Estrutura do Projeto
+
+```
+ecommerce-analytics/
+│
+├── app.py                 # Dashboard Streamlit (principal)
+├── requirements.txt       # Dependências do projeto
+├── pyproject.toml         # Configuração de formatação e build
+│
+├── src/                  # Código fonte
+│   ├── etl/              # Pipeline ETL (pipeline.py)
+│   ├── models/           # Modelos de ML (churn_predictor.py)
+│   └── utils.py          # Utilitários
+│
+├── data/                 # Dados
+│   ├── raw/              # Dados brutos (mantém .gitkeep)
+│   └── processed/        # Dados processados (mantém .gitkeep)
+│
+├── models/               # Modelos treinados (opcional)
+│   └── saved_models/     # Modelos salvos (mantém .gitkeep)
+│
+├── tests/                # Testes unitários (test_etl.py)
+│
+├── docs/                 # Documentação e imagens
+│   └── images/           # Screenshots e ilustrações
+│
+├── examples/             # Exemplos de uso (run_pipeline.py)
+└── README.md             # Documentação principal
+```
 
 ## Como Executar
 
 1. **Clone o repositório:**
 ```bash
-git clone https://github.com/seu-usuario/ecommerce-analytics.git
-cd ecommerce-analytics
+git clone https://github.com/juanmmendes/ecommerce_predicao.git
+cd ecommerce_predicao
 ```
 
-2. **Crie o ambiente virtual e instale as dependências:**
+2. Crie um ambiente virtual:
 ```bash
 python -m venv venv
 .\venv\Scripts\activate
+```
+
+3. Instale as dependências:
+```bash
 pip install -r requirements.txt
 ```
 
-3. **Execute o dashboard:**
+## 💻 Como Usar
+
+1. Execute o pipeline ETL e treine o modelo:
+```bash
+python src/etl/pipeline.py
+```
+
+2. Inicie o dashboard:
 ```bash
 streamlit run app.py
 ```
 
-O pipeline ETL será executado automaticamente ao abrir o dashboard, gerando dados sintéticos, processando, treinando o modelo e exibindo as análises.
+## 📁 Estrutura do Projeto
 
-## Funcionalidades do Dashboard
-
-- **Resumo Executivo**: Métricas gerais do e-commerce (clientes, receita, churn, ticket médio, etc).
-- **Análise de Churn**: Visualização da taxa de churn, principais cidades, faixas etárias e distribuição de gastos.
-- **Segmentação de Clientes**: Classificação automática em VIP, Fiel, Regular e Em Risco.
-- **Recomendações Estratégicas**: Sugestões de ações para retenção e recuperação de receita.
-- **Impacto Financeiro**: Cálculo da receita em risco devido ao churn.
-- **Visualizações Interativas**: Gráficos dinâmicos com Plotly e Streamlit.
-- **Modelo Preditivo**: Upload de CSV ou preenchimento manual para prever churn de novos clientes.
-- **Pergunte ao Modelo**: Interface para perguntas ao modelo preditivo, com resultados instantâneos.
-
-## Exemplo de CSV para Upload
-
-O arquivo CSV para previsão de churn deve conter as seguintes colunas:
-
-```csv
-age,gender,city,premium_member,total_spent,avg_order_value,total_orders,categories_bought,discount_usage,avg_rating,days_since_last_order,customer_lifetime_days
-30,F,São Paulo,1,500.0,100.0,5,3,0.2,4.5,20,400
+```
+ecommerce_portfolio/
+│
+├── app.py                 # Dashboard Streamlit (principal)
+├── ecommerce_etl.py      # Arquivo ETL legado
+├── requirements.txt       # Dependências do projeto
+├── pyproject.toml        # Configuração do projeto
+│
+├── src/                  # Código fonte
+│   ├── __init__.py
+│   ├── config.py        # Configurações do sistema
+│   ├── utils.py         # Funções utilitárias
+│   ├── etl/             # Pipeline ETL
+│   │   ├── __init__.py
+│   │   └── pipeline.py
+│   └── models/          # Modelos ML
+│       └── churn_predictor.py
+│
+├── data/                # Dados
+│   ├── raw/            # Dados brutos
+│   └── processed/      # Dados processados
+│
+├── models/             # Modelos treinados
+│   └── saved_models/   # Modelos salvos
+│
+├── tests/             # Testes unitários
+│   └── test_etl.py   # Testes do pipeline
+│
+├── docs/              # Documentação
+│   └── images/       # Screenshots e imagens
+│       ├── ex1.png
+│       └── ex2.png
+│
+└── examples/          # Exemplos de uso
+    └── run_pipeline.py
 ```
 
-Você pode baixar um exemplo em [`examples/exemplo_churn.csv`](examples/exemplo_churn.csv) (crie este arquivo se desejar).
+## 📊 Funcionalidades do Dashboard
 
-## Testes
+- **Análise de Churn**: Visualização detalhada das taxas de churn
+- **Segmentação de Clientes**: Análise por segmentos (VIP, Regular, Em Risco)
+- **Previsões em Tempo Real**: Modelo de ML para prever churn
+- **Insights Automatizados**: Recomendações baseadas em dados
 
-Execute os testes unitários para garantir a integridade do pipeline:
-```bash
-pytest tests/
-```
+## 🤖 Modelo de Machine Learning
 
-## Principais Tecnologias
+- Algoritmo: Random Forest Classifier
+- Features principais:
+  - Tempo desde última compra
+  - Total gasto
+  - Frequência de compras
+  - Categorias compradas
+  - Rating médio
 
-- **Python 3.8+**
-- **Streamlit** (dashboard web)
-- **Pandas, Numpy** (manipulação de dados)
-- **scikit-learn** (machine learning)
-- **Plotly** (visualizações interativas)
-- **SQLite** (armazenamento local)
-- **Pytest** (testes unitários)
+## 📈 Performance do Modelo
 
-## Screenshots
+- AUC-ROC Score: 1.000
+- Precisão: 100%
+- Recall: 100%
+- F1-Score: 100%
 
-Adicione imagens reais do dashboard em `docs/images/` e inclua exemplos aqui:
+## 🤝 Contribuindo
 
-![Dashboard - Resumo](docs/images/dashboard_resumo.png)
-![Dashboard - Churn](docs/images/dashboard_churn.png)
+Contribuições são bem-vindas! Por favor, leia as [diretrizes de contribuição](CONTRIBUTING.md) primeiro.
 
-## Licença
+## 📝 Licença
 
-Este projeto está sob a licença MIT.
+Este projeto está sob a licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes.
 
-## Como Funciona
+## 📧 Contato
 
-1. **Geração de Dados Sintéticos**: O pipeline cria automaticamente dados fictícios de clientes, produtos e pedidos, simulando um cenário realista de e-commerce.
-2. **ETL (Extract, Transform, Load)**:
-   - **Extract**: Extrai os dados do banco SQLite.
-   - **Transform**: Realiza limpeza, feature engineering e cálculo de métricas por cliente.
-   - **Load**: Salva os dados processados em uma tabela analítica.
-3. **Análise Exploratória**: O dashboard apresenta estatísticas, segmentação de clientes, análise de churn e visualizações interativas (gráficos de pizza, barras, boxplot, etc).
-4. **Geração de Insights**: Segmentação automática dos clientes, recomendações estratégicas baseadas em regras de negócio e cálculo do impacto financeiro do churn.
-5. **Modelo Preditivo de Churn**: Um modelo Random Forest é treinado com as principais features do cliente. O dashboard permite fazer perguntas ao modelo, seja por upload de CSV ou preenchimento manual dos dados, para prever a probabilidade de churn de novos clientes.
-6. **Dashboard Web Interativo**: Tudo é apresentado em uma interface moderna e responsiva via Streamlit, facilitando a exploração dos dados, métricas, recomendações e previsões.
+Juan Mendes - [juan.zx016@gmail.com](mailto:juan.zx016@gmail.com)
 
----
-
-Desenvolvido para portfólio de Data Science e Engenharia de Dados. Sinta-se à vontade para contribuir, adaptar ou usar como referência!
-
----
-
-**Destaques:**
-- Estrutura profissional e modular
-- Código limpo, testado e documentado
-- Pronto para portfólio, entrevistas e demonstrações
-- Fácil de expandir para dados reais ou outros modelos
+Project Link: [https://github.com/juanmmendes/ecommerce_predicao](https://github.com/juanmmendes/ecommerce_predicao)
