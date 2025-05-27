@@ -18,34 +18,49 @@ Este projeto é um pipeline completo de análise de dados para e-commerce, com g
 - **Testes unitários**: cobertura do pipeline e modelo.
 - **Documentação e exemplos**: instruções, exemplos de uso, estrutura profissional.
 
-## Estrutura do Projeto
+## 📊 Screenshots
+
+![Exemplo 1](docs/images/ex1.png)
+![Exemplo 2](docs/images/ex2.png)
+
+## 📁 Estrutura do Projeto
 
 ```
-ecommerce-analytics/
+ecommerce_portfolio/
 │
 ├── app.py                 # Dashboard Streamlit (principal)
+├── ecommerce_etl.py       # Arquivo ETL legado (opcional)
 ├── requirements.txt       # Dependências do projeto
-├── pyproject.toml         # Configuração de formatação e build
+├── pyproject.toml         # Configuração do projeto
+├── LICENSE.md             # Licença MIT
 │
-├── src/                  # Código fonte
-│   ├── etl/              # Pipeline ETL (pipeline.py)
-│   ├── models/           # Modelos de ML (churn_predictor.py)
-│   └── utils.py          # Utilitários
+├── src/                   # Código fonte
+│   ├── __init__.py
+│   ├── config.py          # Configurações do sistema
+│   ├── utils.py           # Funções utilitárias
+│   ├── etl/               # Pipeline ETL
+│   │   ├── __init__.py
+│   │   └── pipeline.py
+│   └── models/            # Modelos ML
+│       └── churn_predictor.py
 │
-├── data/                 # Dados
-│   ├── raw/              # Dados brutos (mantém .gitkeep)
-│   └── processed/        # Dados processados (mantém .gitkeep)
+├── data/                  # Dados
+│   ├── raw/               # Dados brutos
+│   └── processed/         # Dados processados
 │
-├── models/               # Modelos treinados (opcional)
-│   └── saved_models/     # Modelos salvos (mantém .gitkeep)
+├── models/                # Modelos treinados
+│   └── saved_models/      # Modelos salvos
 │
-├── tests/                # Testes unitários (test_etl.py)
+├── tests/                 # Testes unitários
+│   └── test_etl.py        # Testes do pipeline
 │
-├── docs/                 # Documentação e imagens
-│   └── images/           # Screenshots e ilustrações
+├── docs/                  # Documentação
+│   └── images/            # Screenshots e imagens
+│       ├── ex1.png
+│       └── ex2.png
 │
-├── examples/             # Exemplos de uso (run_pipeline.py)
-└── README.md             # Documentação principal
+└── examples/              # Exemplos de uso
+    └── run_pipeline.py
 ```
 
 ## Como Executar
@@ -56,20 +71,20 @@ git clone https://github.com/juanmmendes/ecommerce_predicao.git
 cd ecommerce_predicao
 ```
 
-2. Crie um ambiente virtual:
+2. **Crie um ambiente virtual:**
 ```bash
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
-3. Instale as dependências:
+3. **Instale as dependências:**
 ```bash
 pip install -r requirements.txt
 ```
 
 ## 💻 Como Usar
 
-1. Execute o pipeline ETL e treine o modelo:
+1. Execute o pipeline ETL e treine o modelo (opcional, pois o dashboard executa automaticamente):
 ```bash
 python src/etl/pipeline.py
 ```
@@ -77,45 +92,6 @@ python src/etl/pipeline.py
 2. Inicie o dashboard:
 ```bash
 streamlit run app.py
-```
-
-## 📁 Estrutura do Projeto
-
-```
-ecommerce_portfolio/
-│
-├── app.py                 # Dashboard Streamlit (principal)
-├── ecommerce_etl.py      # Arquivo ETL legado
-├── requirements.txt       # Dependências do projeto
-├── pyproject.toml        # Configuração do projeto
-│
-├── src/                  # Código fonte
-│   ├── __init__.py
-│   ├── config.py        # Configurações do sistema
-│   ├── utils.py         # Funções utilitárias
-│   ├── etl/             # Pipeline ETL
-│   │   ├── __init__.py
-│   │   └── pipeline.py
-│   └── models/          # Modelos ML
-│       └── churn_predictor.py
-│
-├── data/                # Dados
-│   ├── raw/            # Dados brutos
-│   └── processed/      # Dados processados
-│
-├── models/             # Modelos treinados
-│   └── saved_models/   # Modelos salvos
-│
-├── tests/             # Testes unitários
-│   └── test_etl.py   # Testes do pipeline
-│
-├── docs/              # Documentação
-│   └── images/       # Screenshots e imagens
-│       ├── ex1.png
-│       └── ex2.png
-│
-└── examples/          # Exemplos de uso
-    └── run_pipeline.py
 ```
 
 ## 📊 Funcionalidades do Dashboard
@@ -137,14 +113,16 @@ ecommerce_portfolio/
 
 ## 📈 Performance do Modelo
 
-- AUC-ROC Score: 1.000
+- AUC-ROC Score: 1.000 (dados sintéticos)
 - Precisão: 100%
 - Recall: 100%
 - F1-Score: 100%
 
+> **Obs:** Os resultados acima são referentes ao uso de dados sintéticos. Para dados reais, a performance pode variar.
+
 ## 🤝 Contribuindo
 
-Contribuições são bem-vindas! Por favor, leia as [diretrizes de contribuição](CONTRIBUTING.md) primeiro.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
 
 ## 📝 Licença
 
